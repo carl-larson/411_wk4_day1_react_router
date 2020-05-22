@@ -7,13 +7,18 @@ const Car = (props) => {
     const id = props.match.params.id;
     const carInfo = cars[id - 1];
     return (
-        <Paper>
-            <Container>
-            <h1>A specific car: {id}</h1>
-            <h3>{carInfo.Name}</h3>
-            <Chip><span>Horsepower: {carInfo.Horsepower}</span></Chip>
+        <Container maxWidth="sm">
+            <Paper>
+                <h1>A specific car: {id}</h1>
+                <h3>{carInfo.Name}</h3>
+                {
+                    Object.keys(carInfo).map((key) => {
+                        return <Chip label={`${key}: ${carInfo[key]}`}></Chip>
+                    })
+                }
+            </Paper>
         </Container>
-        </Paper>
+        
         
         
     )
